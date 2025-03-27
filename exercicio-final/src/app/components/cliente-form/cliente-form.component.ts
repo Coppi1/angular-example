@@ -20,15 +20,24 @@ export class ClienteFormComponent {
   ) {
     this.clienteForm = this.fb.group({
       name: ['', Validators.required],
-      age: ['', [Validators.required, Validators.min(0), Validators.max(120)]]
+      age: ['', [Validators.required, Validators.min(0), Validators.max(120)]],
+      country: ['', Validators.required],    
+      gender: ['', Validators.required],       
+      newsletter: [false]                 
     });
   }
 
   onSubmit() {
     if (this.clienteForm.valid) {
+
+      console.log('Dados do formulário:', this.clienteForm.value);
+
       const novoCliente = {
         name: this.clienteForm.value.name,
-        age: this.clienteForm.value.age
+        age: this.clienteForm.value.age,
+        country: this.clienteForm.value.country,
+        gender: this.clienteForm.value.gender,
+        newsletter: this.clienteForm.value.newsletter
       };
 
       this.clienteService.adicionarCliente(novoCliente);

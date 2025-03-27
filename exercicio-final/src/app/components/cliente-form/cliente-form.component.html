@@ -28,6 +28,33 @@
           </mat-error>
         </mat-form-field>
 
+        <div class="full-width">
+          <mat-label>Gênero</mat-label>
+          <mat-radio-group formControlName="gender" required>
+            <mat-radio-button value="M" class="radio-option">Masculino</mat-radio-button>
+            <mat-radio-button value="F" class="radio-option">Feminino</mat-radio-button>
+          </mat-radio-group>
+          <mat-error *ngIf="clienteForm.get('gender')?.hasError('required')">
+            Gênero é obrigatório
+          </mat-error>
+        </div>
+
+        <div class="full-width checkbox-section">
+          <mat-checkbox formControlName="newsletter">Desejo receber newsletter</mat-checkbox>
+        </div>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>País</mat-label>
+          <mat-select formControlName="country" required>
+            <mat-option value="BR">Brasil</mat-option>
+            <mat-option value="US">Estados Unidos</mat-option>
+            <mat-option value="PT">Portugal</mat-option>
+          </mat-select>
+          <mat-error *ngIf="clienteForm.get('country')?.hasError('required')">
+            País é obrigatório
+          </mat-error>
+        </mat-form-field>
+
         <div class="button-group">
           <button mat-raised-button color="primary" type="submit" [disabled]="!clienteForm.valid">
             Salvar
